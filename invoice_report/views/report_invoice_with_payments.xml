@@ -167,10 +167,12 @@
                                                     </tr>
                                                 </t>
                                             </t>
-                                            <tr>
-                                                <td>Importe adeudado</td>
-                                                <td><t t-esc="o.amount_residual"/></td>
-                                            </tr>
+                                            <t t-if="o.amount_residual">
+                                                <tr>
+                                                    <td>Importe adeudado</td>
+                                                    <td><t t-esc="o.amount_residual"/></td>
+                                                </tr>
+                                            </t>
                                         </tbody>
                                     </table>
                                 </div>
