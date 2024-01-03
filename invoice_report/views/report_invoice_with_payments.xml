@@ -3,7 +3,7 @@
         <!-- Define el informe -->
         <report
             id="invoice_report.report_invoice_with_payments"
-            model="invoice_report.report_invoice_with_payments"
+            model="account.move"
             string="Invoice Report with Payments"
             report_type="qweb-pdf"
             file="invoice_report.report_invoice_with_payments"
