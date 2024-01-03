@@ -153,7 +153,11 @@
 
                                             <tr>
                                                 <td>Total</td>
-                                                <td><t t-esc="tax_totals['formatted_amount_total']"/></td>
+                                                <td>
+                                                    <t t-if="tax_totals">
+                                                        <t t-esc="tax_totals['formatted_amount_total']"/>
+                                                    </t>
+                                                </td>
                                             </tr>
                                             <t t-if="o.payments_vals">
                                                 <t t-foreach="o.payments_vals" t-as="payment">
