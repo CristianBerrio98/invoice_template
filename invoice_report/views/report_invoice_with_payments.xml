@@ -2,7 +2,6 @@
     <data>
         <!-- Define el informe -->
         <report
-            id="invoice_report.infopro"
             model="account.move"
             string="Invoice Report with Payments"
             report_type="qweb-pdf"
