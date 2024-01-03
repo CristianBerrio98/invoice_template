@@ -162,7 +162,7 @@
                                             <t t-if="o.payments_vals">
                                                 <t t-foreach="o.payments_vals" t-as="payment">
                                                     <tr>
-                                                        <td>Pagado en <t t-esc="payment['payment_date']"/></td>
+                                                        <td><t t-esc="payment['payment_date']"/></td>
                                                         <td><t t-esc="payment['payment_amount']"/></td>
                                                     </tr>
                                                 </t>
