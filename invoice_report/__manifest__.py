@@ -10,10 +10,9 @@
     'data': [
         'views/report_invoice_with_payments.xml',
     ],
-    'installable': True,
-    'auto_install': False,
-    'demo': [],
     'qweb': [
         'static/src/xml/report_invoice_with_payments.xml',
     ],
+    'installable': True,
+    'auto_install': False,
 }
