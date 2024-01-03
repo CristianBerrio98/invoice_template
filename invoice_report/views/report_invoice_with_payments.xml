@@ -39,7 +39,6 @@
                                 <div class="d-flex justify-content-start col row">
                                     <div class="col">
                                         <p><strong>NIT: </strong> <t t-esc="o.company_id.vat"/></p>
-                                        <p><strong>Tipo de organización: </strong> <t t-esc="o.company_id.type_organization_id"/> </p>
                                         <p><strong>Tipo de regimén: </strong> <t t-esc="o.company_id.type_regime_id"/></p>
                                         <p><strong>Tipo de responsabilidad: </strong> <t t-esc="o.company_id.liabilty_id"/></p>
                                         <p><strong>Tipo de operación: </strong> <t t-esc="o.ei_operation"/></p>
