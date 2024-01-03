@@ -7,8 +7,8 @@
         'views/report_invoice_with_payments.xml',
     ],
     'installable': True,
-    'auto_install': False,
-    'application': True,
+    'auto_install': True,
+    'application': False,
     'sequence': 1,
     'demo': [],
     'qweb': [
