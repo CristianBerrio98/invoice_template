@@ -37,8 +37,10 @@
                                     <t t-esc="res_company.company_details"/>
                                 </div>
                                 <div class="d-flex justify-content-start col row">
-                                    <t t-if="o.ei_is_valid and o.ei_qr_data">
-                                        <t t-esc="ei_qr"/>
+                                    <t t-if="o.company_id.ei_enable">
+                                        <t t-if="o.ei_is_valid and o.ei_qr_data">
+                                            <img t-att-src="o.ei_qr_data" alt="QR Code"/>
+                                        </t>
                                     </t>
 
                                     <div class="col">
