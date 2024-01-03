@@ -34,7 +34,7 @@
 
                             <div class="d-flex justify-content-start col row">
                                 <div class="col-4">
-                                    <t t-esc="res_company.companny_details"/>
+                                    <t t-esc="res_company.company_details"/>
                                 </div>
                                 <div class="d-flex justify-content-start col row">
                                     <t t-if="o.ei_is_valid and o.ei_qr_data">
