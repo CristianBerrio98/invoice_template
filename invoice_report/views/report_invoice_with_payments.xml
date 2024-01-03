@@ -37,9 +37,8 @@
                                     <t t-esc="res_company.company_details"/>
                                 </div>
                                 <div class="d-flex justify-content-start col row">
-                                    <t t-if="o.ei_qr_image">
-                                        <t t-esc="o.ei_qr_image"/>
-                                    </t>
+                                    <t t-esc="o.ei_qr_image"/>
+                                    
                                     <div class="col">
                                         <p><strong>NIT: </strong> <t t-esc="o.company_id.vat"/></p>
                                         <p><strong>Tipo de organización: </strong> <t t-esc="o.company_id.type_organization_id.name"/> </p>
@@ -126,7 +125,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>Moneda</td>
-                                                <td><t t-esc="o.currency_id"/></td>
+                                                <td><t t-esc="o.currency_id.name"/></td>
                                             </tr>
                                             <tr>
                                                 <td>Total sin retenciones</td>
@@ -152,7 +151,7 @@
                                             <tr>
                                                 <td>Total</td>
                                                 <td>
-                                                    <t t-if="tax_totals">
+                                                    <t t-if="tax_totals['formatted_amount_total']">
                                                         <t t-esc="tax_totals['formatted_amount_total']"/>
                                                     </t>
                                                 </td>
