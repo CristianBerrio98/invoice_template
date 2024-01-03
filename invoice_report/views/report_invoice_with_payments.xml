@@ -107,7 +107,7 @@
                                                         <p><t t-esc="tax.name"/></p>
                                                     </t>
                                                 </td>
-                                                 <td><t t-esc="line.price_subtotal"/></td>
+                                                <td><t t-esc="line"/></td>
                                             </tr>
                                         </t>
                                     </tbody>
