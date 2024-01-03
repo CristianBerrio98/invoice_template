@@ -142,7 +142,7 @@
                                                     </tr>
                                                 </t>
                                             </t>
-                                            <t t-if="tax_totals['groups_by_subtotal'][subtotal_to_show]">
+                                            <t t-if="tax_totals and 'groups_by_subtotal' in tax_totals and subtotal_to_show in tax_totals['groups_by_subtotal']">
                                                 <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">
                                                     <tr>
                                                         <td><t t-esc="amount_by_group['tax_group_name']"/></td>
@@ -150,6 +150,7 @@
                                                     </tr>
                                                 </t>
                                             </t>
+
                                             <tr>
                                                 <td>Total</td>
                                                 <td><t t-esc="tax_totals['formatted_amount_total']"/></td>
