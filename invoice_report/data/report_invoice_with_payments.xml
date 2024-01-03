@@ -2,12 +2,12 @@
     <data>
         <!-- Define el informe -->
         <report
-            id="invoice_report_infopro.report_invoice_with_payments"
+            id="invoice_report.report_invoice_with_payments"
             model="account.move"
             string="Invoice Report with Payments"
             report_type="qweb-pdf"
             file="invoice_report_with_payments"
-            name="invoice_report_infopro.report_invoice_with_payments"
+            name="invoice_report.report_invoice_with_payments"
         />
 
         <!-- Define la plantilla del informe -->
