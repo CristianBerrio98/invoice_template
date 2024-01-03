@@ -8,7 +8,7 @@
     'category': 'Invoice',
     'depends': ['base', 'account'],
     'data': [
-        'data/report_invoice_with_payments.xml',
+        'views/report_invoice_with_payments.xml',
     ],
     'qweb': [
         'static/src/xml/report_invoice_with_payments.xml',
