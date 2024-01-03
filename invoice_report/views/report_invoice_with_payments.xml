@@ -37,16 +37,14 @@
                                     <t t-esc="res_company.company_details"/>
                                 </div>
                                 <div class="d-flex justify-content-start col row">
-                                    <t t-if="ei_header and ei_qr">
-                                        <t t-esc="ei_header">
-                                            <t t-esc="ei_qr" />
-                                        </t>
+                                    <t t-if="o.ei_qr_image">
+                                        <t t-esc="o.ei_qr_image"/>
                                     </t>
                                     <div class="col">
                                         <p><strong>NIT: </strong> <t t-esc="o.company_id.vat"/></p>
-                                        <p><strong>Tipo de organización: </strong> <t t-esc="o.company_id.type_organization_id"/> </p>
-                                        <p><strong>Tipo de regimén: </strong> <t t-esc="o.company_id.type_regime_id"/></p>
-                                        <p><strong>Tipo de responsabilidad: </strong> <t t-esc="o.company_id.type_liability_id"/></p>
+                                        <p><strong>Tipo de organización: </strong> <t t-esc="o.company_id.type_organization_id.name"/> </p>
+                                        <p><strong>Tipo de regimén: </strong> <t t-esc="o.company_id.type_regime_id.name"/></p>
+                                        <p><strong>Tipo de responsabilidad: </strong> <t t-esc="o.company_id.type_liability_id.name"/></p>
                                         <p><strong>Tipo de operación: </strong> <t t-esc="o.ei_operation"/></p>
                                         <p>Factura Electrónica de Venta <strong style="font-size: 20px"> <t t-esc="o.name"/> </strong></p>
                                     </div>
@@ -78,7 +76,7 @@
                                     </div>
                                     <div class="col">
                                         <strong>Forma de pago:</strong>
-                                        <p><t t-esc="o.payment_form_id"/></p>
+                                        <p><t t-esc="o.payment_form_id.name"/></p>
                                     </div>
                                 </div>
                             </div>
