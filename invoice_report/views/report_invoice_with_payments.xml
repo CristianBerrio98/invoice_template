@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="d-flex justify-content-start col row">
                                     <t t-if="o.ei_is_valid and o.ei_qr_data">
-                                        <img t-att-src="'data:image/png;base64,' + o.qr_code" alt="QR Code"/>
+                                        <img t-att-src="ei_qr" alt="QR Code"/>
                                     </t>
 
                                     <div class="col">
