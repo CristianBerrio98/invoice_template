@@ -37,7 +37,7 @@
                                     <t t-esc="res_company.company_details"/>
                                 </div>
                                 <div class="d-flex justify-content-start col row">
-                                    <t t-esc="o.ei_qr_image"/>
+                                    <img t-if="o.ei_qr_image" t-attf-src="data:image/png;base64,{{ o.ei_qr_image }}"/>
                                     
                                     <div class="col">
                                         <p><strong>NIT: </strong> <t t-esc="o.company_id.vat"/></p>
