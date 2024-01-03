@@ -1,4 +1,4 @@
 from odoo import models, fields, api
 
 class AccountInvoice(models.Model):
-    _inherit = 'account.invoice'
+    _name = 'invoice_report.report_invoice_with_payments'
