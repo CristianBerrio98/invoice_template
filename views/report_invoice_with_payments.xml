@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <!-- Define el informe -->
+        <report
+            id="invoice_report_modulo.report_invoice_with_payments"
+            model="account.invoice"
+            string="Invoice Report with Payments"
+            report_type="qweb-pdf"
+            file="invoice_report_modulo.report_invoice_with_payments"
+            name="invoice_report_modulo.report_invoice_with_payments"
+        />
+
+        <!-- Define la plantilla del informe -->
+        <template id="report_invoice_with_payments">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <!-- Estructura del encabezado -->
+                    <div class="header">
+                        <div class="company-logo">
+                            <img t-att-src="'/web/image/company/' + o.company_id.id + '/logo'" alt="Logo"/>
+                        </div>
+                        <div class="company-info">
+                            <h2><t t-esc="o.company_id.name"/></h2>
+                            <p>Dirección: <t t-esc="o.company_id.street"/></p>
+                            <p>Teléfono: <t t-esc="o.company_id.phone"/></p>
+                            <!-- Agrega más información de la empresa según sea necesario -->
+                        </div>
+                    </div>
+
+                    <!-- Detalles de la factura -->
+                    <div class="invoice-details">
+                        <h2>Factura: <t t-esc="o.number"/></h2>
+                        <p>Fecha de emisión: <t t-esc="o.date_invoice"/></p>
+                        <!-- Agrega más detalles de la factura según sea necesario -->
+
+                        <!-- Título del informe -->
+                        <h3>Reporte de Factura con Pagos</h3>
+                    </div>
+
+                    <!-- Cuerpo del informe -->
+                    <div class="content">
+                        <!-- Agrega los datos del informe según sea necesario -->
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

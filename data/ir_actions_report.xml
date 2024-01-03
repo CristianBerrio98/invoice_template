@@ -1,0 +1,12 @@
+<!-- data/ir_actions_report.xml -->
+<odoo>
+    <data>
+        <record id="report_invoice_document" model="ir.actions.report">
+            <field name="name">Invoice Document</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">trm_account.report_invoice_document</field>
+            <field name="report_file">trm_account.report_invoice_document</field>
+        </record>
+    </data>
+</odoo>
