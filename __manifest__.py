@@ -12,9 +12,8 @@
     ],
     'installable': True,
     'auto_install': False,
-    'sequence': 1,
     'demo': [],
     'qweb': [
-        'static/src/xml/module_name.xml',
+        'static/src/xml/report_invoice_with_payments.xml',
     ],
 }

@@ -14,32 +14,158 @@
         <template id="report_invoice_with_payments">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <!-- Estructura del encabezado -->
-                    <div class="header">
-                        <div class="company-logo">
-                            <img t-att-src="'/web/image/company/' + o.company_id.id + '/logo'" alt="Logo"/>
+                    <style>
+                        p {
+                            margin: 0px !important;
+                            font-size: 12px;
+                        }
+
+                        strong {
+                            font-size: 12px;
+                        }
+
+                        td, th {
+                            font-size: 12px;
+                        }
+                    </style>
+
+                    <div class="container-fluid">
+                        <header class="d-flex justify-content-start row" style="height: 150px;">
+                            <img class="img-thumbnail" style="width:120px; height: 120px" t-att-src="'/web/image/company/' + o.company_id.id + '/logo'" alt="Logo"/>
+                            <div class="d-flex justify-content-start col row">
+                                <div class="col-4">
+                                    <t t-esc="o.company_id.details"/>
+                                </div>
+                                <div class="d-flex justify-content-start col row">
+                                    <t t-if="o.ei_is_valid and o.ei_qr_data">
+                                        <img t-att-src="'data:image/png;base64,' + o.qr_code" alt="QR Code"/>
+                                    </t>
+
+                                    <div class="col">
+                                        <p><strong>NIT: </strong> <t t-esc="o.company_id.vat"/></p>
+                                        <p><strong>Tipo de organización: </strong> <t t-esc="o.company_id.type_organization_id"/> </p>
+                                        <p><strong>Tipo de regimén: </strong> <t t-esc="o.company_id.type_regime_id"/></p>
+                                        <p><strong>Tipo de responsabilidad: </strong> <t t-esc="o.company_id.liabilty_id"/></p>
+                                        <p><strong>Tipo de operación: </strong> <t t-esc="o.ei_operation"/></p></p>
+                                        <p>Factura Electrónica de Venta <strong style="font-size: 20px"> <t t-esc="o.name"/> </strong></p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </header>
+
+                        <div class="container-fluid">
+                            <div class="d-flex justify-content-start col row">
+                                <div class="col-4">
+                                    <p style="margin: 0px;">NIT: <t t-esc="o.partner_id.vat"/></p>
+                                    <p style="margin: 0px;"><t t-esc="o.partner_id.name"/></p>
+                                    <p style="margin: 0px;"><t t-esc="o.partner_id.street"/></p>
+                                    <p style="margin: 0px;"><t t-esc="o.partner_id.phone"/></p>
+                                    <p style="margin: 0px;"><t t-esc="o.partner_id.email"/></p>
+                                </div>
+                                <div class="col-8 row">
+                                    <div class="col">
+                                        <strong>Fecha de emisión:</strong>
+                                        <p><t t-esc="o.ei_issue_datetime"/></p>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Fecha de expedición:</strong>
+                                        <p><t t-esc="o.ei_expedition_date"/></p>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Fecha de vencimiento:</strong>
+                                        <p><t t-esc="o.invoice_date_due"/></p>
+                                    </div>
+                                    <div class="col">
+                                        <strong>Forma de pago:</strong>
+                                        <p><t t-esc="o.payment_form_id"/></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col row">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Descripcion</th>
+                                            <th scope="col">Cantidad</th>
+                                            <th scope="col">Precio Unitario</th>
+                                            <th scope="col">Impuestos</th>
+                                            <th scope="col">Importe</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="o.invoice_line_ids" t-as="line">
+                                            <tr>
+                                                <th><t t-esc="line.sequence"/></th>
+                                                <td><t t-esc="line.name"/></td>
+                                                <td><t t-esc="line.quantity"/></td>
+                                                <td><t t-esc="line.price_unit"/></td>
+                                                <td>
+                                                    <t t-foreach="line.tax_ids" t-as="tax">
+                                                        <p><t t-esc="tax.name"/></p>
+                                                    </t>
+                                                </td>
+                                                 <td><t t-esc="line.price_subtotal"/></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col row">
+                                <div class="col-7 fs-6">
+                                    <strong>Las retenciones son solo a nivel informativo.</strong>
+                                    <p><strong>Número de autorización de facturación: </strong> <t t-esc="o.resolution_id.resolution_resolution"/></p>
+                                    <p><strong>Fecha: </strong> <t t-esc="o.resolution_id.resolution_resolution_date"/></p>
+                                    <p><strong>Rango autorizado desde: </strong> <t t-esc="o.resolution_id.resolution_prefix"/> <t t-esc="o.resolution_id.resolution_from"/> <strong> a </strong> <t t-esc="o.resolution_id.resolution_prefix"/> <t t-esc="o.resolution_id.resolution_to"/></p>
+                                    <p><strong>Válido desde: </strong> <t t-esc="o.resolution_id.resolution_date_from"/> <strong> a </strong> <t t-esc="o.resolution_id.resolution_date_to"/></p>
+                                    <strong>Representación gráfica de facturación electrónica impresa por computador con software propio por <t t-esc="o.company_id.business_name"/></strong>
+                                </div>
+                                <div class="col">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Moneda</td>
+                                                <td><t t-esc="o.currency_id"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total sin retenciones</td>
+                                                <td><t t-esc="o.ei_amount_total_no_withholding"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><t t-esc="subtotal['name']"/></td>
+                                                <td><t t-esc="subtotal['formatted_amount']"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><t t-esc="amount_by_group['tax_group_name']"/></td>
+                                                <td><t t-esc="amount_by_group['formatted_tax_group_amount']"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td><t t-esc="tax_totals['formatted_amount_total']"/></td>
+                                            </tr>
+                                            <t t-foreach="o.payments_vals" t-as="payment">
+                                                <tr>
+                                                    <td>Pagado en <t t-esc="payment['payment_date']"/></td>
+                                                    <td><t t-esc="payment['payment_amount']"/></td>
+                                                </tr>
+                                            </t>
+                                            <tr>
+                                                <td>Importe adeudado</td>
+                                                <td><t t-esc="o.amount_residual"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="d-flex col row">
+                                <p class="m-auto"><t t-esc="o.narration"/></p>
+                                
+                                <p style="font-size: 10px;"><strong style="font-size: 10px;"><t t-esc="o.resolution_id.resolution_type_document_id.type"/>: </strong> <t t-esc="o.ei_uuid"/></p>
+                            </div>
                         </div>
-                        <div class="company-info">
-                            <h2><t t-esc="o.company_id.name"/></h2>
-                            <p>Dirección: <t t-esc="o.company_id.street"/></p>
-                            <p>Teléfono: <t t-esc="o.company_id.phone"/></p>
-                            <!-- Agrega más información de la empresa según sea necesario -->
-                        </div>
-                    </div>
-
-                    <!-- Detalles de la factura -->
-                    <div class="invoice-details">
-                        <h2>Factura: <t t-esc="o.number"/></h2>
-                        <p>Fecha de emisión: <t t-esc="o.date_invoice"/></p>
-                        <!-- Agrega más detalles de la factura según sea necesario -->
-
-                        <!-- Título del informe -->
-                        <h3>Reporte de Factura con Pagos</h3>
-                    </div>
-
-                    <!-- Cuerpo del informe -->
-                    <div class="content">
-                        <!-- Agrega los datos del informe según sea necesario -->
                     </div>
                 </t>
             </t>
