@@ -30,7 +30,7 @@
 
                     <div class="container-fluid">
                         <header class="d-flex justify-content-start row" style="height: 150px;">
-                            <t t-esc="res_company.logo_web"/>
+                            <img t-att-src="'/web/image/website/%s/logo' % o.company_id.id" alt="Logo"/>
 
                             <div class="d-flex justify-content-start col row">
                                 <div class="col-4">
