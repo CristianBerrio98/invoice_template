@@ -142,19 +142,25 @@
                                                     </tr>
                                                 </t>
                                             </t>
-                                            <tr>
-                                                <td><t t-esc="amount_by_group['tax_group_name']"/></td>
-                                                <td><t t-esc="amount_by_group['formatted_tax_group_amount']"/></td>
-                                            </tr>
+                                            <t t-if="tax_totals['groups_by_subtotal'][subtotal_to_show]">
+                                                <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">
+                                                    <tr>
+                                                        <td><t t-esc="amount_by_group['tax_group_name']"/></td>
+                                                        <td><t t-esc="amount_by_group['formatted_tax_group_amount']"/></td>
+                                                    </tr>
+                                                </t>
+                                            </t>
                                             <tr>
                                                 <td>Total</td>
                                                 <td><t t-esc="tax_totals['formatted_amount_total']"/></td>
                                             </tr>
-                                            <t t-foreach="o.payments_vals" t-as="payment">
-                                                <tr>
-                                                    <td>Pagado en <t t-esc="payment['payment_date']"/></td>
-                                                    <td><t t-esc="payment['payment_amount']"/></td>
-                                                </tr>
+                                            <t t-if="o.payments_vals">
+                                                <t t-foreach="o.payments_vals" t-as="payment">
+                                                    <tr>
+                                                        <td>Pagado en <t t-esc="payment['payment_date']"/></td>
+                                                        <td><t t-esc="payment['payment_amount']"/></td>
+                                                    </tr>
+                                                </t>
                                             </t>
                                             <tr>
                                                 <td>Importe adeudado</td>
