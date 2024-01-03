@@ -30,7 +30,7 @@
 
                     <div class="container-fluid">
                         <header class="d-flex justify-content-start row" style="height: 150px;">
-                            <t t-esc="res_company.logo_web"/>
+                           <img t-att-src="'/web/image/company/%s/logo' % o.company_id.id" alt="Logo"/>
 
                             <div class="d-flex justify-content-start col row">
                                 <div class="col-4">
@@ -55,31 +55,6 @@
                         </header>
 
                         <div class="container-fluid">
-                            <div class="d-flex justify-content-start row" style="height: 150px;">
-                                <t t-esc="res_company.logo_web"/>
-
-                                <div class="d-flex justify-content-start col row">
-                                    <div class="col-4">
-                                        <t t-esc="res_company.company_details"/>
-                                    </div>
-                                    <div class="d-flex justify-content-start col row">
-                                        <t t-if="o.company_id.ei_enable">
-                                            <t t-if="o.ei_is_valid and o.ei_qr_data">
-                                                <img t-att-src="o.ei_qr_data" alt="QR Code"/>
-                                            </t>
-                                        </t>
-                                        <div class="col">
-                                            <p><strong>NIT: </strong> <t t-esc="o.company_id.vat"/></p>
-                                            <p><strong>Tipo de organización: </strong> <t t-esc="o.company_id.type_organization_id"/> </p>
-                                            <p><strong>Tipo de regimén: </strong> <t t-esc="o.company_id.type_regime_id"/></p>
-                                            <p><strong>Tipo de responsabilidad: </strong> <t t-esc="o.company_id.type_liability_id"/></p>
-                                            <p><strong>Tipo de operación: </strong> <t t-esc="o.ei_operation"/></p>
-                                            <p>Factura Electrónica de Venta <strong style="font-size: 20px"> <t t-esc="o.name"/> </strong></p>
-                                        </div>
-                                    </div>  
-                                </div>
-                            </div>
-
                             <div class="d-flex justify-content-start col row">
                                 <div class="col-4">
                                     <p style="margin: 0px;">NIT: <t t-esc="o.partner_id.vat"/></p>
@@ -103,7 +78,7 @@
                                     </div>
                                     <div class="col">
                                         <strong>Forma de pago:</strong>
-                                        <p><t t-esc="o.payment_form_id.name"/></p>
+                                        <p><t t-esc="o.payment_form_id"/></p>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +128,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>Moneda</td>
-                                                <td><t t-esc="o.currency_id.name"/></td>
+                                                <td><t t-esc="o.currency_id"/></td>
                                             </tr>
                                             <tr>
                                                 <td>Total sin retenciones</td>
