@@ -151,7 +151,7 @@
                                             <tr>
                                                 <td>Total</td>
                                                 <td>
-                                                    <t t-if="tax_totals['formatted_amount_total']">
+                                                    <t t-if="tax_totals">
                                                         <t t-esc="tax_totals['formatted_amount_total']"/>
                                                     </t>
                                                 </td>
