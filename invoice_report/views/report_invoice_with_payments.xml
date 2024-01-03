@@ -134,10 +134,12 @@
                                                 <td>Total sin retenciones</td>
                                                 <td><t t-esc="o.ei_amount_total_no_withholding"/></td>
                                             </tr>
-                                            <tr>
-                                                <td><t t-esc="subtotal['name']"/></td>
-                                                <td><t t-esc="subtotal['formatted_amount']"/></td>
-                                            </tr>
+                                            <t t-foreach="tax_totals['subtotales']" t-as="subtotal">
+                                                <tr>
+                                                    <td><t t-esc="subtotal['name']"/></td>
+                                                    <td><t t-esc="subtotal['formatted_amount']"/></td>
+                                                </tr>
+                                            </t>
                                             <tr>
                                                 <td><t t-esc="amount_by_group['tax_group_name']"/></td>
                                                 <td><t t-esc="amount_by_group['formatted_tax_group_amount']"/></td>
