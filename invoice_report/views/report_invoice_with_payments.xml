@@ -29,7 +29,7 @@
                     </style>
 
                     <div class="container-fluid">
-                        <DIV class="d-flex justify-content-start row" style="height: 150px;">
+                        <div class="d-flex justify-content-start row" style="height: 150px;">
                             <t t-esc="res_company.logo_web"/>
 
                             <div class="d-flex justify-content-start col row">
@@ -52,7 +52,7 @@
                                     </div>
                                 </div>  
                             </div>
-                        </DIV>
+                        </div>
 
                         <div class="d-flex justify-content-start col row">
                             <div class="col-4">
