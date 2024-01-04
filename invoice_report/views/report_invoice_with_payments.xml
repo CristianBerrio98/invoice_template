@@ -37,7 +37,7 @@
                                     <t t-esc="res_company.company_details"/>
                                 </div>
                                 <div class="d-flex justify-content-start col row">
-                                    <img t-if="o.ei_qr_image" t-attf-src="data:image/png;base64,{{ o.ei_qr_image }}"/>
+                                    <img t-if="o.ei_qr_image" style="width:110px; height:110px" t-attf-src="data:image/png;base64,{{ o.ei_qr_image }}"/>
                                     
                                     <div class="col">
                                         <p><strong>NIT: </strong> <t t-esc="o.company_id.vat"/></p>
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="col row">
+                            <div class="col row" style="min-height: 700px;">
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -101,10 +101,10 @@
                                                 <td><t t-esc="line.price_unit"/></td>
                                                 <td>
                                                     <t t-foreach="line.tax_ids" t-as="tax">
-                                                        <p><t t-esc="tax.name"/></p>
+                                                        <p><t t-esc="tax.amount"/></p>
                                                     </t>
                                                 </td>
-                                                <td><t t-esc="line"/></td>
+                                                <td><t t-esc="line.quantity * line.price_unit" /></td>
                                             </tr>
                                         </t>
                                     </tbody>
@@ -151,9 +151,7 @@
                                             <tr>
                                                 <td>Total</td>
                                                 <td>
-                                                    <t t-if="tax_totals">
-                                                        <t t-esc="tax_totals['formatted_amount_total']"/>
-                                                    </t>
+                                                    <t t-log="tax_totals"/>
                                                 </td>
                                             </tr>
                                             <t t-if="payments_vals">
